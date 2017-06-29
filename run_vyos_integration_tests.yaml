@@ -1,0 +1,11 @@
+---
+- include: ansible/test/integration/vyos.yaml
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - shell: nodepool list | grep '\svyos\s' | cut -d '|' -f2 | tr -d ' '
+      register: nl
+    - shell: nodepool delete "{{ nl.stdout }}"
