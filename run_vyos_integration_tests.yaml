@@ -1,5 +1,6 @@
 ---
 - include: ansible/test/integration/vyos.yaml
+  ignore_errors: yes
 
 - hosts: localhost
   gather_facts: no
